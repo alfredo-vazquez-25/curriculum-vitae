@@ -21,11 +21,19 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+            "src/favicon.ico",
+            "src/assets",
+            {
+              "glob": "**/*",
+              "input": "src/assets",
+              "output": "/assets/"
+            },
+            {
+              "glob": "mi-cv.pdf",
+              "input": "src/assets/docs",
+              "output": "/assets/docs/"
+            }
+          ],
             "styles": [
               "src/styles.css"
             ],

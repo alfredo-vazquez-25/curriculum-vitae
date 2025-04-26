@@ -1,0 +1,11 @@
+<div class="start-menu">
+    <button class="start-button" (click)="toggleMenu()">
+      <img src="assets/windows-logo.png" alt="Start">
+      <span>Inicio</span>
+    </button>
+    <div class="menu" *ngIf="isMenuOpen">
+      <div class="menu-item" (click)="openWindow('cv')">Mi CV</div>
+      <div class="menu-item" (click)="openWindow('projects')">Proyectos</div>
+      <div class="menu-item" (click)="openWindow('contact')">Contacto</div>
+    </div>
+  </div>

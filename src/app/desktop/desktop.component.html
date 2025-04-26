@@ -1,0 +1,42 @@
+<div class="desktop">
+  <!-- Iconos -->
+  <div class="icon" (dblclick)="openWindow(1)">
+    <img src="assets/icons/cv-icon.png" width="40" alt="CV">
+    <span>Mi CV</span>
+  </div>
+  
+  <div class="icon" (dblclick)="openWindow(2)">
+    <img src="assets/icons/projects-icon.png" width="40" alt="Proyectos">
+    <span>Proyectos</span>
+  </div>
+
+  <!-- Ventanas -->
+  @for (window of windows; track window.id) {
+    <div *ngIf="window.visible" 
+         class="window" 
+         cdkDrag
+         (cdkDragStarted)="bringToFront(window.id)"
+         [ngStyle]="getWindowStyle(window)">
+         
+      <div class="title-bar" cdkDragHandle>
+        <span>{{ window.title }}</span>
+        <button (click)="closeWindow(window.id)">X</button>
+      </div>
+      
+      <div class="content">
+        @if (window.type === 'pdf') {
+          <object [data]="window.content" 
+                 type="application/pdf"
+                 width="100%"
+                 height="100%">
+            <p>Tu navegador no soporta PDFs. 
+              <a [href]="window.content" download>Descargar CV</a>
+            </p>
+          </object>
+        } @else {
+          <p>{{ window.content }}</p>
+        }
+      </div>
+    </div>
+  }
+</div>

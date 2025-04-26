@@ -1,0 +1,54 @@
+<div class="desktop" [style.backgroundImage]="'url(' + wallpaper + ')'">
+  <!-- Iconos del escritorio -->
+  <div class="icons-container">
+    <div *ngFor="let icon of desktopIcons" 
+         class="icon" 
+         (dblclick)="openWindow(icon.windowName)"
+         (click)="selectIcon(icon.name)"
+         [class.selected]="selectedIcon === icon.name">
+      <img [src]="'assets/icons/' + icon.icon" [alt]="icon.name">
+      <span>{{ icon.name }}</span>
+    </div>
+  </div>
+
+  <!-- Ventanas abiertas -->
+  <app-cv-window *ngIf="isWindowOpen('cv')" 
+                (close)="closeWindow('cv')"
+                [style.zIndex]="getZIndex('cv')">
+  </app-cv-window>
+  
+  <app-projects-window *ngIf="isWindowOpen('projects')"
+                      (close)="closeWindow('projects')"
+                      [style.zIndex]="getZIndex('projects')">
+  </app-projects-window>
+
+  <!-- Barra de tareas -->
+  <div class="taskbar">
+    <button class="start-button" (click)="toggleStartMenu()">
+      <img src="assets/icons/windows-icon.png" alt="Inicio">
+      <span>Inicio</span>
+    </button>
+    
+    <div class="taskbar-windows">
+      <button *ngFor="let window of openWindows"
+              class="taskbar-window"
+              [class.active]="isWindowOpen(window)"
+              (click)="focusWindow(window)">
+        <img [src]="'assets/icons/' + window + '-icon.png'" width="16">
+        {{ getWindowName(window) }}
+      </button>
+    </div>
+    
+    <div class="clock">{{ currentTime | date:'HH:mm' }}</div>
+  </div>
+
+  <!-- Menú de inicio -->
+  <div class="start-menu" *ngIf="showStartMenu">
+    <div *ngFor="let item of startMenuItems" 
+         class="menu-item"
+         (click)="handleMenuItem(item)">
+      <img [src]="'assets/icons/' + item.icon" width="20">
+      <span>{{ item.name }}</span>
+    </div>
+  </div>
+</div>
