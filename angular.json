@@ -14,6 +14,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/cv-windows-style",
+            "deployUrl": "/curriculum-vitae/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -41,6 +42,7 @@
           },
           "configurations": {
             "production": {
+              "deployUrl": "/curriculum-vitae/",
               "budgets": [
                 {
                   "type": "initial",
