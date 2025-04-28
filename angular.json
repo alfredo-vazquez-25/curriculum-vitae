@@ -13,9 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "docs",  
-            "deployUrl": "/curriculum-vitae/",
-            "baseHref": "/curriculum-vitae/",  
+            "outputPath": "docs", 
+            "baseHref": "/curriculum-vitae/",
+            "deployUrl": "/curriculum-vitae/",  
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
